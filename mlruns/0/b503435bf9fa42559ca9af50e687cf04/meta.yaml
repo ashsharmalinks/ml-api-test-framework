@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/b503435bf9fa42559ca9af50e687cf04/artifacts
+end_time: 1754578135535
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b503435bf9fa42559ca9af50e687cf04
+run_name: able-whale-329
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754578132274
+status: 4
+tags: []
+user_id: Asus
