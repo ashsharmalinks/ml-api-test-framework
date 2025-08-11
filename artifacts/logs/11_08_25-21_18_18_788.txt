@@ -1,0 +1,12 @@
+11/08/2025 09:18:18 PM: INFO: environment: before_feature: Feature file: tests/ui_bdd/features/login.feature
+11/08/2025 09:18:18 PM: INFO: environment: before_feature: Number of Scenarios: 1
+11/08/2025 09:18:18 PM: INFO: environment: before_feature: Feature: Login and Account Summary Verification
+11/08/2025 09:18:18 PM: INFO: environment: before_scenario: @ui
+11/08/2025 09:18:18 PM: INFO: environment: before_scenario: Scenario: Successful login and account summary verification
+11/08/2025 09:18:18 PM: INFO: environment: before_scenario: Given I open the login page
+11/08/2025 09:18:18 PM: INFO: environment: before_scenario: And I have clicked the sign-in button
+11/08/2025 09:18:18 PM: INFO: environment: before_scenario: When I enter valid credentials
+11/08/2025 09:18:30 PM: ERROR: image_attachments: attach_image_binary: [behavex-images] It was not possible to add the image to the report: 'Context' object has no attribute 'bhximgs_image_hash'
+11/08/2025 09:18:30 PM: INFO: environment: after_scenario: Scenario status: Status.failed
+11/08/2025 09:18:30 PM: INFO: environment: after_scenario: ELK disabled or no [elk] section; skipping push.
+11/08/2025 09:18:30 PM: INFO: environment: after_feature: Feature Status: Status.failed

@@ -1,0 +1,20 @@
+Feature: Login and Account Summary Verification # tests/ui_bdd/features/login.feature:1
+  As a user
+  I want to verify the login functionality and account summary
+  So that I can access my account and perform transactions
+  @ui
+  Scenario: Successful login and account summary verification  # tests/ui_bdd/features/login.feature:7
+    Given I open the login page                                # tests/ui_bdd/features/steps/login_steps.py:6
+    And I have clicked the sign-in button                      # tests/ui_bdd/features/steps/login_steps.py:11
+    When I enter valid credentials                             # tests/ui_bdd/features/steps/login_steps.py:15
+
+Feature: Login and Account Summary Verification # tests/ui_bdd/features/login.feature:1
+  As a user
+  I want to verify the login functionality and account summary
+  So that I can access my account and perform transactions
+  @ui
+  Scenario: Successful login and account summary verification  # tests/ui_bdd/features/login.feature:7
+    Given I open the login page                                # tests/ui_bdd/features/steps/login_steps.py:6
+    And I have clicked the sign-in button                      # tests/ui_bdd/features/steps/login_steps.py:11
+    When I enter valid credentials                             # tests/ui_bdd/features/steps/login_steps.py:15
+
