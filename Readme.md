@@ -1,4 +1,186 @@
-# ML / API Test Framework — now with UI (Behave + Playwright + POM)
+# 🚀 ML API Test Framework — Step-by-Step Guide
+
+This project demonstrates an **end-to-end ML pipeline** for the Ash Test model dataset, including training, validation, drift detection, and serving predictions via a Flask API.
+
+---
+
+## 📂 Project Structure
+
+```
+app/
+  model_api.py            # Flask API: /health, /predict
+data/
+  train.csv               # training/reference data
+  current.csv             # (optional) latest batch for drift test
+model/
+  ash_test_model.pkl      # saved sklearn Pipeline (created by training)
+  feature_names.json      # raw column order used by the pipeline
+preprocessing/
+  pipeline.py             # get_preprocessing_pipeline(X)
+tests/
+  test_data.py
+  test_model.py
+  test_prediction.py
+  test_drift.py
+  test_api.py
+validation/
+  validate_data.py        # Great Expectations checks
+mlruns/                   # MLflow runs (created after training)
+pytest.ini
+requirements.txt
+```
+
+---
+
+## 🛠️ Prerequisites
+
+- Python **3.12** (64-bit)
+- **Git** (optional)
+- Windows PowerShell or macOS/Linux terminal
+
+💡 *macOS/Linux users:* replace activation command with `source .venv3.12/bin/activate`
+
+---
+
+## ⚙️ Setup
+
+```powershell
+# Clone repo (if using Git)
+git clone <repo-url>
+cd <project-folder>
+
+# Create and activate virtual environment
+python -m venv .venv3.12
+. .\.venv3.12\Scripts\Activate.ps1
+
+# Upgrade essentials
+python -m pip install -U pip setuptools wheel
+
+# Install dependencies
+pip install --only-binary=:all: -r requirements.txt
+```
+
+> If Great Expectations import errors appear:
+```powershell
+pip install "great-expectations==0.15.50"
+```
+
+---
+
+## 📋 Workflow
+
+### 1️⃣ Train Model (creates sklearn Pipeline)
+```powershell
+python .\train_model.py
+```
+
+### 2️⃣ Validate Raw Data
+```powershell
+python .\validation\validate_data.py
+```
+
+### 3️⃣ Run Tests
+
+#### ✅ Data Checks
+```powershell
+pytest tests/test_data.py -v
+```
+
+#### 📊 Model Quality
+```powershell
+pytest tests/test_model.py -v
+```
+
+#### 🔍 Drift Detection
+```powershell
+Copy-Item .\data\train.csv .\data\current.csv
+pytest tests/test_drift.py -v
+```
+
+#### 🔄 Prediction Pipeline
+```powershell
+pytest tests/test_prediction.py -v
+```
+
+#### 🌐 API Tests
+1. Start API server:
+```powershell
+python -c "import app.model_api as m; m.app.run(host='127.0.0.1', port=8000, debug=False, use_reloader=False)"
+```
+
+2. Health check:
+```powershell
+curl http://127.0.0.1:8000/health
+```
+
+3. Run API tests:
+```powershell
+pytest tests/test_api.py -v
+```
+
+---
+
+## 🔌 API Endpoints
+
+### **GET /health**
+Returns readiness and model load info.
+
+Example:
+```json
+{
+  "loaded_as": "Pipeline",
+  "model_loaded_sec": 0.056,
+  "status": "ok"
+}
+```
+
+### **POST /predict**
+
+**Payload Options:**
+1. Dictionary (recommended)
+```json
+{
+  "features": { "Pclass": 3, "Sex": 0, "Age": 22, "Fare": 7.25 }
+}
+```
+2. List (must match training order in `feature_names.json`)
+```json
+{
+  "features": [3, 0, 22, 7.25]
+}
+```
+
+**Example Call:**
+```powershell
+curl -X POST "http://127.0.0.1:8000/predict" -H "Content-Type: application/json" ^
+     -d "{"features":{"Pclass":3,"Sex":0,"Age":22,"Fare":7.25}}"
+```
+
+---
+
+## 🛠️ Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| **ConnectionRefused** | Ensure API is running: `python -c "import app.model_api as m; m.app.run(...)"` |
+| **Feature mismatch** | Retrain and save a Pipeline (`train_model.py`) |
+| **Port in use** | Change API port in run command |
+| **Missing Evidently** | `pip install evidently==0.7.12` |
+
+---
+
+## 🏁 Quick One-Liner (Windows)
+```powershell
+python .\train_model.py; `
+python .\validation\validate_data.py; `
+pytest tests/test_data.py -v; `
+pytest tests/test_model.py -v; `
+Copy-Item .\data\train.csv .\data\current.csv -Force; `
+pytest tests/test_drift.py -v; `
+pytest tests/test_prediction.py -v
+```
+
+---
 
 End-to-end UI tests now live alongside your existing ML/API tests.  
 Stack: **Behave** (Gherkin), **Playwright** (Chromium/Firefox/WebKit), and a clean **Page Object Model (POM)**.
@@ -14,6 +196,10 @@ Stack: **Behave** (Gherkin), **Playwright** (Chromium/Firefox/WebKit), and a cle
 - Running Tests
 - Page Object Model (POM)
 - Reporting (Allure) & Artifacts
+- IDE Notes (PyCharm Community / VS Code)
+- CI Example (GitHub Actions)
+- Troubleshooting
+
 ---
 
 ## Overview
@@ -99,25 +285,6 @@ Make your `environment.py` read `context.config.userdata` first, then env vars, 
 [behave]
 paths = tests/ui_bdd/features
 format = pretty
-```
-
-### Optional: `details.ini`
-If you keep one for extra settings (read by `configparser` in hooks):
-```ini
-[app]
-base_url = https://your-app
-browser  = chromium
-headless = true
-
-[auth]
-username = user
-password = pass
-
-[elk]               ; optional metrics/log push
-enabled = false
-url = http://localhost:9200
-index = behave-tests
-```
 
 ---
 
@@ -155,47 +322,3 @@ behave tests/ui_bdd/features/login.feature -f pretty
 ```bash
 behave tests/ui_bdd/features --dry-run -f plain
 ```
-
----
-
-## Page Object Model (POM)
-
-**`pages/base_page.py`** (core helpers)
-- ARIA-first locators: `by_role`, `by_label`, `by_test_id`
-- Safe `click`/`fill` with waits + small retry
-- Section utilities: `first_following_container_of_heading`, `count_items_with_text`
-- Diagnostics: `screenshot`, `assert_nav_links_work`
-
-**`pages/login_page.py`**
-- `open()` → navigates to login/home as needed
-- `click_sign_in_button()` → robust fallback (ID → role button → role link)
-- `enter_credentials(username, password)` → fills fields, doesn’t log secrets
-- `submit()` → clicks submit
-
-**`pages/account_summary_page.py`**
-- `visible()` → wait for “Account Summary”
-- `cash_savings_count_is(n)`
-- `investment_brokerage_count_is(n)`
-- `navigation_links_work()`
-
-> Steps should **only** call POM methods. Keep selectors in page classes, not steps.
-
----
-
-## Reporting (Allure) & Artifacts
-
-### Generate Allure results
-```bash
-behave tests/ui_bdd/features   -f allure_behave.formatter:AllureFormatter -o reports/allure_results -f pretty
-```
-
-### View report
-```bash
-allure serve reports/allure_results
-```
-
-### Artifacts
-- **Screenshots** on failure (saved by hooks), e.g. `artifacts/screenshots/…`
-- **Playwright tracing** (optional) `artifacts/traces/trace.zip`
-
----
