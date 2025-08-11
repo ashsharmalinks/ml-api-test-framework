@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527/1179641d3003495e96268de0b1ac44f2/artifacts
+end_time: 1754925784309
+entry_point_name: ''
+experiment_id: '968221928416074527'
+lifecycle_stage: active
+run_id: 1179641d3003495e96268de0b1ac44f2
+run_name: aged-elk-774
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754925781471
+status: 3
+tags: []
+user_id: artis

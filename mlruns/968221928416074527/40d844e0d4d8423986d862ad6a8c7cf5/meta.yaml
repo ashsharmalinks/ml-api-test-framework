@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527/40d844e0d4d8423986d862ad6a8c7cf5/artifacts
+end_time: 1754920950078
+entry_point_name: ''
+experiment_id: '968221928416074527'
+lifecycle_stage: active
+run_id: 40d844e0d4d8423986d862ad6a8c7cf5
+run_name: incongruous-wren-874
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754920949684
+status: 4
+tags: []
+user_id: artis

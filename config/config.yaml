@@ -1,0 +1,12 @@
+api:
+  host: 127.0.0.1
+  port: 8000
+  debug: false
+
+models:
+  titanic:
+    model_path: model/ash_test_model/ash_test_model.pkl             # pipeline or estimator
+    feature_names_path: model/ash_test_model/feature_names.json     # optional (fallback to train CSV)
+    train_csv_path: data/raw/train.csv                   # used for fallback preprocessor
+    target_col: Survived
+    # you can add custom params later, e.g. threshold, version, owner, description

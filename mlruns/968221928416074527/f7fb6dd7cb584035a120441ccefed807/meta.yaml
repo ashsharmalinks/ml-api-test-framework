@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527/f7fb6dd7cb584035a120441ccefed807/artifacts
+end_time: 1754925703356
+entry_point_name: ''
+experiment_id: '968221928416074527'
+lifecycle_stage: active
+run_id: f7fb6dd7cb584035a120441ccefed807
+run_name: ambitious-sponge-807
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754925702142
+status: 3
+tags: []
+user_id: artis

@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527/f991bb5cc98b4d4cb5a292330d04ce9b/artifacts
+end_time: 1754921032896
+entry_point_name: ''
+experiment_id: '968221928416074527'
+lifecycle_stage: active
+run_id: f991bb5cc98b4d4cb5a292330d04ce9b
+run_name: likeable-dolphin-910
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754921032500
+status: 4
+tags: []
+user_id: artis

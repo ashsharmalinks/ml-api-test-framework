@@ -1,6 +1,10 @@
 # tests/test_prediction.py
-
+import pytest
 import requests
+
+@pytest.fixture(scope="session")
+def base_url():
+    return "http://127.0.0.1:8000/v1/predict/titanic"
 
 def test_valid_prediction(base_url):
     response = requests.post(base_url, json={"features": [3, 0, 22, 7.25]})

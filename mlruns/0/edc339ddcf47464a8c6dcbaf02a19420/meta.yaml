@@ -1,0 +1,14 @@
+artifact_uri: mlflow-artifacts:/0/edc339ddcf47464a8c6dcbaf02a19420/artifacts
+end_time: 1754859272542
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: edc339ddcf47464a8c6dcbaf02a19420
+run_name: nosy-crane-716
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754859271939
+status: 4
+tags: []
+user_id: artis

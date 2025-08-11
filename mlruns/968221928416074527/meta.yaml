@@ -1,0 +1,6 @@
+artifact_location: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527
+creation_time: 1754859365404
+experiment_id: '968221928416074527'
+last_update_time: 1754859365404
+lifecycle_stage: active
+name: titanic_model_experiment

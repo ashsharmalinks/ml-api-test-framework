@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/682292875189829209/d63dd3dd9a464a58a49529f714113d6c/artifacts
+end_time: 1754904248168
+entry_point_name: ''
+experiment_id: '682292875189829209'
+lifecycle_stage: active
+run_id: d63dd3dd9a464a58a49529f714113d6c
+run_name: omniscient-owl-706
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754904247263
+status: 3
+tags: []
+user_id: artis

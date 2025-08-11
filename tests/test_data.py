@@ -6,7 +6,7 @@ def test_input_schema():
     schema = DataFrameSchema({
         "Pclass": Column(int),
         "Sex": Column(int),
-        "Age": Column(float),
+        "Age": Column(int),
         "Fare": Column(float)
     })
     df = pd.DataFrame([{"Pclass": 3, "Sex": 1, "Age": 25, "Fare": 8.5}])

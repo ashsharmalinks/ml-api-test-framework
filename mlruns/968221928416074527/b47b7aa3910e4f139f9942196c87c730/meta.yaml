@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527/b47b7aa3910e4f139f9942196c87c730/artifacts
+end_time: 1754905940951
+entry_point_name: ''
+experiment_id: '968221928416074527'
+lifecycle_stage: active
+run_id: b47b7aa3910e4f139f9942196c87c730
+run_name: abrasive-shad-977
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754905940233
+status: 3
+tags: []
+user_id: artis

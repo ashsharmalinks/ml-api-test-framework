@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/artis/PycharmProjects/ml-api-test-framework/mlruns/968221928416074527/d15f8f9f95c04ba6b0c85a5120c7142e/artifacts
+end_time: 1754921071408
+entry_point_name: ''
+experiment_id: '968221928416074527'
+lifecycle_stage: active
+run_id: d15f8f9f95c04ba6b0c85a5120c7142e
+run_name: merciful-mole-816
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754921070659
+status: 3
+tags: []
+user_id: artis
